@@ -3,10 +3,14 @@ import { PortionHolder } from "./PortionHolder"
 import { Weekday } from "./Weekday"
 import { RecipePlaceholder } from './RecipePlaceholder'
 import { Logo } from './Logo'
+import { Metadata } from './Metadata'
 
 export const Calendar = () => {
     return <>
     <div id='caledarGrid'>
+        <div id="metadata">
+            <Metadata />
+        </div>
         <div id="days">
             <Logo />
             <Weekday day="Monday"/>
