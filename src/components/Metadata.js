@@ -1,9 +1,6 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { updateMetadata } from "../reducers/metadata"
 
 const Metadata = () => {
-  const dispatch = useDispatch()
 
   return (
     <div className='metadata'>
@@ -11,7 +8,7 @@ const Metadata = () => {
         Plan name
       </div>
       <div className="metadataElement right">
-        <input id="menuNameInput" type="text" onChange={(event) => dispatch(updateMetadata({ menuName: event.target.value }))} />
+        <input id="menuNameInput" type="text" />
       </div>
       <div className="metadataElement">
         Number of diners
