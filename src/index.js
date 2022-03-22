@@ -5,9 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { configureStore } from "@reduxjs/toolkit"
 import { Provider } from "react-redux"
+import metadataReducer from "./reducers/metadata"
 
 const store = configureStore({
-	reducer: {}
+	reducer: {
+    metadata: metadataReducer
+  }
 })
 
 ReactDOM.render(

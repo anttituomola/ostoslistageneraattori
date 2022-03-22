@@ -1,14 +1,44 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { updateMetadata } from "../reducers/metadata"
 
-export const Metadata = () => {
+const Metadata = () => {
+  const dispatch = useDispatch()
+
   return (
-    <div>
-        <input type="number" /> Number of diners
-        <input type="number" /> Number of days
-        <input type="radio" id="1" name="number_of_portions" value="1" />
-            <label for="1">1</label>
-        <input type="radio" id="2" name="number_of_portions" value="2" />
-            <label for="1">2</label>
+    <div className='metadata'>
+      <div className="metadataElement">
+        Plan name
+      </div>
+      <div className="metadataElement right">
+        <input id="menuNameInput" type="text" onChange={(event) => dispatch(updateMetadata({ menuName: event.target.value }))} />
+      </div>
+      <div className="metadataElement">
+        Number of diners
+      </div>
+      <div className="metadataElement right">
+        <button className="metaMinus">-</button><span className="metaNumber">2</span><button>+</button>
+      </div>
+      <div className="metadataElement">
+        Number of days
+      </div>
+      <div className="metadataElement right">
+        <button className="metaMinus">-</button><span className="metaNumber">2</span><button>+</button>
+      </div>
+      <div className="metadataElement">
+        Portions per day
+      </div>
+      <div className="metadataElement right">
+        <button className="metaMinus">-</button><span className="metaNumber">2</span><button>+</button>
+      </div>
+      <div className="metadataElement">
+        Allergies
+      </div>
+      <div className="metadataElement right">
+        <span>Nuts</span><span>Kiwi</span>
+      </div>
     </div>
   )
 }
+
+export default Metadata

@@ -1,41 +1,86 @@
-.App {
-  display: grid;
-  grid-template-columns: 4fr 2fr;
-  column-gap: 1em;
-  margin: 0.5em;
+body {
+    margin: 2em;
+    width: 60%;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.App-link {
-  color: #61dafb;
+.metadata {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    line-height: 2em;
+    width: 60%;
+    align-items: baseline;
 }
 
-#caledarGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-auto-rows: minmax(50px, auto);
+.metadata > .right {
+    justify-self: end;
 }
 
-#days {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  background-color: lightgray;
+.metadata button {
+    margin: 0.25em;
+    padding: 1em;
+    height: 2em;
+    width: 2em;
+    text-align: center;
+    line-height: 1em;
 }
 
-#portions {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-auto-rows: max-content;
-  align-items: baseline;
+#menuHeader {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
 }
 
-#recipeHolder {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.25em;
+#menuActions{
+    display: flex;
+    gap: 2em;
+    cursor: pointer;
 }
 
-.recipeBox {
-  text-align: center;
-  border: 1px solid grey;
-  border-radius: 5px;
+.day {
+    border: 1px solid grey;
+    border-radius: 8px;
+    max-width: fit-content;
+    padding: 1em;
+}
+
+#dayContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1em;
+}
+
+#shoppingListHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.triangleDown {
+    transform: rotate( -180deg );            
+    transition: transform 150ms ease;
+    cursor: pointer;
+    padding: 0.5em;
+}
+
+.triangleUp {
+    transform: rotate( 360deg );            
+    transition: transform 150ms ease;
+    cursor: pointer;
+    padding: 0.5em;
+}
+
+.ingredientsHidden {
+    display: none;
+}
+
+.ingredientsVisible {
+    margin-top: 0;
+}
+
+@media (max-width: 600px) {
+    body {
+        margin: 0.25em;
+    }
 }
