@@ -1,11 +1,11 @@
 import React from 'react'
-import DayName from './DayName'
 import Portion from './Portion'
+import dayjs from 'dayjs'
 
-const Day = () => {
+const Day = (props) => {
   return (
     <div className="day">
-        <DayName />
+        <div>{props.day}</div>
         <Portion />
         <Portion />
     </div>
