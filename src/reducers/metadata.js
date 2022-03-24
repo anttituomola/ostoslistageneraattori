@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
     menuName: "",
-    diners: 0,
-    days: 0,
-    portionsPerDay: 0,
+    diners: 2,
+    days: 3,
+    portionsPerDay: 2,
     allergies: []
 }
 
