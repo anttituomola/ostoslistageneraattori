@@ -1,10 +1,19 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import * as metaActions from "../reducers/metadata"
+import { allergies } from '../data/allergies'
 
 const Metadata = () => {
   const wholeState = useSelector(state => state)
   const dispatch = useDispatch()
+
+  const toggleClass = (id) => {
+    if (wholeState.metadata.allergies.includes(id)) {
+      return "allergy allergy-selected"
+    } else {
+      return "allergy"
+    }
+  }
 
   return (
     <div className='metadata'>
@@ -12,7 +21,7 @@ const Metadata = () => {
         Plan name
       </div>
       <div className="metadataElement right">
-        <input id="menuNameInput" type="text" onChange={(event) => dispatch(metaActions.menuName(event.target.value))}/>
+        <input id="menuNameInput" type="text" placeholder="Unhealthy madness" onChange={(event) => dispatch(metaActions.menuName(event.target.value))}/>
       </div>
       <div className="metadataElement">
         Number of diners
@@ -42,8 +51,9 @@ const Metadata = () => {
         Allergies
       </div>
       <div className="metadataElement right">
-        <input type="text" onChange={(event) => dispatch(metaActions.addAllergy(event.target.value))}></input>
-        <div>{wholeState.metadata.allergies}</div>
+        {allergies.map((allergy, index) => <span id={allergy} key={allergy+index} className={toggleClass(allergy)} onClick={() => {
+          dispatch(metaActions.addAllergy(allergy))
+          }}>{allergy}</span>)}
       </div>
     </div>
   )

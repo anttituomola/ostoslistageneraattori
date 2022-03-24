@@ -26,6 +26,29 @@ body {
     line-height: 1em;
 }
 
+#menuNameInput {
+    border: none;
+    text-align: end;
+    width: fit-content;
+}
+
+.allergy {
+    margin: 0 0.5em;
+    color: grey;
+    cursor: pointer;
+    padding: 0.25em;
+    align-content: center;
+}
+.allergy-selected {
+    color: black;
+    border: 1px solid aquamarine;
+    border-radius: 3px;
+}
+
+.allergy:hover {
+    color: black;
+}
+
 #menuHeader {
     display: flex;
     align-items: baseline;

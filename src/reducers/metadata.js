@@ -40,7 +40,11 @@ export const metadataSlice = createSlice({
             }
         },
         addAllergy: (state, action) => {
-            state.allergies = action.payload
+            if (state.allergies.includes(action.payload)) {
+                state.allergies = state.allergies.filter(allergy => allergy !== action.payload)
+            } else {
+                state.allergies.push(action.payload) 
+            }
         }
     }
 })
