@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 const DayContainer = () => {
   const wholeState = useSelector(state => state)
   const days = [...Array(wholeState.metadata.days)].map((element, index) => {
-    return <Day day={dayjs().add(index, "day").format("dddd, DD.MM")} />
+    return <Day day={dayjs().add(index, "day").format("dddd, DD.MM")} key={index}/>
   })
 
   return (

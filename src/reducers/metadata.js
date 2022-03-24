@@ -19,19 +19,25 @@ export const metadataSlice = createSlice({
             state.diners += 1
         },
         decrementDiners: (state) => {
-            state.diners -= 1
+            if (state.diners > 0) {
+                state.diners -= 1
+            }
         },
         incrementDays: (state) => {
             state.days += 1
         },
         decrementDays: (state) => {
-            state.days -= 1
+            if (state.days > 0) {
+                state.days -= 1
+            }
         },
         incrementPortions: (state) => {
             state.portionsPerDay += 1
         },
         decrementPortions: (state) => {
-            state.portionsPerDay -= 1
+            if (state.portionsPerDay > 0) {
+                state.portionsPerDay -= 1
+            }
         },
         addAllergy: (state, action) => {
             state.allergies = action.payload

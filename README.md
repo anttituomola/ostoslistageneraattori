@@ -3,5 +3,4 @@
 todo:
 - rajoita numerovalitsimia alimmillaan nollaan: Element.setAttribute(disabled, true);
 - allergian autofill
-- plan name muokattavaksi
-- näytä niin monta päivää kuin on valittu (maks 7?)
+- plan name muokattavaksi ja sen tallennus stateen
