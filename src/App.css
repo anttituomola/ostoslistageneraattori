@@ -58,15 +58,15 @@ body {
 }
 
 .triangleDown {
-    transform: rotate( -180deg );            
-    transition: transform 150ms ease;
+    transform: rotate( 180deg );            
+    transition: transform 500ms ease;
     cursor: pointer;
     padding: 0.5em;
 }
 
 .triangleUp {
     transform: rotate( 360deg );            
-    transition: transform 150ms ease;
+    transition: transform 50jhljhljkhljkhgl0ms ease;
     cursor: pointer;
     padding: 0.5em;
 }
