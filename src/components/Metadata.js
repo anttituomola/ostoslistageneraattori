@@ -21,7 +21,7 @@ const Metadata = () => {
         Plan name
       </div>
       <div className="metadataElement right">
-        <input id="menuNameInput" type="text" placeholder="Unhealthy madness" onChange={(event) => dispatch(metaActions.menuName(event.target.value))}/>
+        <input id="menuNameInput" autoComplete='off' type="text" placeholder="Unhealthy madness" onChange={(event) => dispatch(metaActions.menuName(event.target.value))}/>
       </div>
       <div className="metadataElement">
         Number of diners

@@ -1,7 +1,9 @@
 import React from 'react'
+import BuildPlan from './BuildPlan'
 
-function Portion() {
-    return <h1>Portion</h1>
+function Portion(props) {
+    
+    return <h3>{props.name[0]}</h3>
 }
 
 export default Portion

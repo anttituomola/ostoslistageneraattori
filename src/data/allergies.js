@@ -1,0 +1,1 @@
+export const allergies = ["milk", "fish", "eggs", "gluten", "nuts"]

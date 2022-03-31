@@ -33,7 +33,7 @@ body {
 }
 
 .allergy {
-    margin: 0 0.5em;
+    margin-left: 0.5em;
     color: grey;
     cursor: pointer;
     padding: 0.25em;
@@ -42,7 +42,7 @@ body {
 .allergy-selected {
     color: black;
     border: 1px solid aquamarine;
-    border-radius: 3px;
+    border-radius: 10px;
 }
 
 .allergy:hover {
