@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import * as metaActions from "../reducers/metadata"
-import { allergies } from '../data/allergies'
+import allergies from '../data/allergies'
 
 const Metadata = () => {
   const wholeState = useSelector(state => state)
