@@ -31,10 +31,14 @@ const DayContainer = () => {
 
   return (
     <div id="dayContainer">
+      
+      {/*  Loop through days */}
       {filledDays.map((day, index) => {
         return (
           <div key={index} className="day">
             <h2>{dayjs().add(index, "day").format("dddd")}</h2>
+
+            {/*  Loop through portions within a day */}
             {day.map((portion, index) => {
               console.log(portion, index)
               return (
