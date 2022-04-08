@@ -7,6 +7,7 @@ const Modal = (props) => {
     const dispatch = useDispatch()
     const modalRef = useRef(null)
     const modalVisible = useSelector(state => state.modal.modalVisible)
+    const recipe = useSelector(state => state.modal.modalRecipe)
 
     useOnClickOutside(modalRef, () => dispatch(hideModal()));
 
@@ -57,7 +58,7 @@ const Modal = (props) => {
         <div className="modal">
             <div className="modalContent" ref={modalRef}>
                 <span className="close" onClick={() => dispatch(hideModal())}>X</span>
-                <p>{props.portion}</p>
+                <p>{recipe}</p>
             </div>
         </div>
     )

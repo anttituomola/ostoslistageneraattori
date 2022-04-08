@@ -1,21 +1,18 @@
 import React from 'react'
-import recipes from '../data/fetchData'
-import Modal from './Modal'
 import { useDispatch } from 'react-redux'
-import { v4 as uuid } from "uuid"
-import { showModal } from '../reducers/modalReducer'
+import { showModal, setModalRecipe } from '../reducers/modalReducer'
 
-const Portion = () => {
+const Portion = (props) => {
     const dispatch = useDispatch()
-    const id = uuid()
 
-    // Pick a random recipe from recipes
-    const recipe = recipes[Math.floor(Math.random() * recipes.length)]
+    function handleModalGeneration() {
+        dispatch(showModal())
+        dispatch(setModalRecipe(props.recipe))
+    }
 
     return (
-        <div className="portion" onClick={() => dispatch(showModal())}>
-            <h3>{recipe}</h3>
-            <Modal portion={recipe} id={id} />
+        <div className="portion" onClick={() => handleModalGeneration()}>
+            <h3>{props.recipe}</h3>
         </div>
     )
 }
