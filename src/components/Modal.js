@@ -1,9 +1,14 @@
 import React, { useEffect, useRef } from 'react'
+import { useDispatch } from 'react-redux';
+import { hideModal } from '../reducers/modalReducer';
+import { useSelector } from 'react-redux';
 
 const Modal = (props) => {
+    const dispatch = useDispatch()
     const modalRef = useRef(null)
+    const modalVisible = useSelector(state => state.modal.modalVisible)
 
-    useOnClickOutside(modalRef, () => props.closeModal());
+    useOnClickOutside(modalRef, () => dispatch(hideModal()));
 
     function useOnClickOutside(ref, handler) {
         useEffect(
@@ -31,7 +36,7 @@ const Modal = (props) => {
         const { keyCode } = event;
 
         if (keyCode === 27) {
-            props.closeModal();
+            dispatch(hideModal())
         }
     };
 
@@ -43,16 +48,16 @@ const Modal = (props) => {
         }
     })
 
-    // Ei renderöidä mikäli showModal on false
-    if (!props.showModal) {
+    // Ei renderöidä mikäli modalVisible on false
+    if (!modalVisible) {
         return null
     }
     
     return (
         <div className="modal">
             <div className="modalContent" ref={modalRef}>
-                <span className="close" onClick={props.closeModal}>X</span>
-                <p>Hieno modaali!</p>
+                <span className="close" onClick={() => dispatch(hideModal())}>X</span>
+                <p>{props.portion}</p>
             </div>
         </div>
     )

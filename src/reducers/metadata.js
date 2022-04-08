@@ -5,7 +5,7 @@ const initialState = {
     diners: 2,
     days: 3,
     portionsPerDay: 2,
-    allergies: []
+    allergies: [],
 }
 
 export const metadataSlice = createSlice({
@@ -45,7 +45,7 @@ export const metadataSlice = createSlice({
             } else {
                 state.allergies.push(action.payload) 
             }
-        }
+        },
     }
 })
 

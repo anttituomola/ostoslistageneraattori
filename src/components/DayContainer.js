@@ -1,62 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import dayjs from 'dayjs'
 import { useSelector } from 'react-redux'
-import useBuildPlan from '../data/buildPlan'
-import Modal from './Modal'
+import Day from './Day'
+import { v4 as uuid } from "uuid"
 
 const DayContainer = () => {
-  const [showModal, setModal] = useState(false)
-  
-    const closeModal = () => {
-      setModal(false)
-    }
-  const recipes = useBuildPlan()
-  const days = useSelector(state => state.metadata.days)
-  const portionsPerDay = useSelector(state => state.metadata.portionsPerDay)
-  const dayElements = [...Array(days)]
-  const portionElements = [...Array(portionsPerDay)]
-  const localRecipes = [...recipes]
 
-  // Fill day elements with portion elements
-  dayElements.map((day, index) => {
-    dayElements[index] = portionElements
-    return dayElements
+  const daysNeeded = useSelector(state => state.metadata.days)
+
+  const days = Array.from({ length: daysNeeded }, (x, i) => {
+    return <Day key={uuid()} weekday={dayjs().add(i, "day").format("dddd")} />
   })
-
-  // Fill portion elements with recipes
-  const filledDays = dayElements.map((day, index) => {
-    day = day.map((portion, index) => {
-      day[index] = localRecipes.pop()
-      return day[index]
-    })
-    return day
-  })
-
-  console.log(filledDays)
-
 
   return (
     <div id="dayContainer">
-
-      {/*  Loop through days */}
-      {filledDays.map((day, index) => {
-        return (
-          <div key={index} className="day">
-            <h2>{dayjs().add(index, "day").format("dddd")}</h2>
-
-            {/*  Loop through portions within a day */}
-            {day.map((portion, index) => {
-              console.log(portion, index)
-              return (
-                <div key={index} className="portion" onClick={() => setModal(true)}>
-                  <h3>{portion}</h3>
-                </div>
-              )
-            })}
-          </div>
-        )
-      })}
-      <Modal showModal={showModal} closeModal={closeModal}/>
+      {days}
     </div>
   )
 }

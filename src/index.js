@@ -6,10 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import { configureStore } from "@reduxjs/toolkit"
 import { Provider } from "react-redux"
 import metadataReducer from "./reducers/metadata"
+import modalReducer from './reducers/modalReducer';
 
 const store = configureStore({
 	reducer: {
-    metadata: metadataReducer
+    metadata: metadataReducer,
+    modal: modalReducer,
   }
 })
 
