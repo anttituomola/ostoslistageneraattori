@@ -1,5 +1,7 @@
 #Ostoslistageneraattori
 
-todo:
-- allergian autofill
-- plan name muokattavaksi ja sen tallennus stateen
+Tämä on työn alla oleva yrityksen ratkaista jokapäiväinen ongelma: mitä syötän tänään perheelleni.
+
+Voit seurata projektia blogistani: https://anttituomola.fi/tag/ostoslistageneraattori/
+
+Tai katsoa sovelluksen nykytilaa livedemosta: https://ostoslistageneraattori.netlify.app/

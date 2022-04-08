@@ -58,7 +58,7 @@ const Modal = (props) => {
         <div className="modal">
             <div className="modalContent" ref={modalRef}>
                 <span className="close" onClick={() => dispatch(hideModal())}>X</span>
-                <p>{recipe}</p>
+                <h2>{recipe}</h2>
             </div>
         </div>
     )
