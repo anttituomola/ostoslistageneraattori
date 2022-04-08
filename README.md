@@ -1,4 +1,4 @@
-#Ostoslistageneraattori
+# Ostoslistageneraattori
 
 Tämä on työn alla oleva yrityksen ratkaista jokapäiväinen ongelma: mitä syötän tänään perheelleni.
 
