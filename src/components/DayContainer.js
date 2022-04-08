@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import dayjs from 'dayjs'
 import { useSelector } from 'react-redux'
 import useBuildPlan from '../data/buildPlan'
+import Modal from './Modal'
 
 const DayContainer = () => {
+  const [showModal, setModal] = useState(false)
+  
+    const closeModal = () => {
+      setModal(false)
+    }
   const recipes = useBuildPlan()
   const days = useSelector(state => state.metadata.days)
   const portionsPerDay = useSelector(state => state.metadata.portionsPerDay)
@@ -31,7 +37,7 @@ const DayContainer = () => {
 
   return (
     <div id="dayContainer">
-      
+
       {/*  Loop through days */}
       {filledDays.map((day, index) => {
         return (
@@ -42,7 +48,7 @@ const DayContainer = () => {
             {day.map((portion, index) => {
               console.log(portion, index)
               return (
-                <div key={index} className="portion">
+                <div key={index} className="portion" onClick={() => setModal(true)}>
                   <h3>{portion}</h3>
                 </div>
               )
@@ -50,6 +56,7 @@ const DayContainer = () => {
           </div>
         )
       })}
+      <Modal showModal={showModal} closeModal={closeModal}/>
     </div>
   )
 }
