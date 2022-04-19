@@ -146,3 +146,12 @@ body {
     text-decoration: none;
     cursor: pointer;
   }
+
+  .portion {
+      cursor: pointer;
+  }
+
+  .portion:hover {
+      text-decoration: underline;
+      transform: scale(1.05);
+  }
