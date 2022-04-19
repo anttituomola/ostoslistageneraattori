@@ -12,9 +12,10 @@ export default function App() {
   const dispatch = useDispatch()
   const state = useSelector(state => state.recipes.recipes)
 
+  // Load recipes from API
   useEffect(() => {
     const fetchData = async () => {
-      if (state.length === 0) { // Katsotaan, onko lista tyhjä
+      if (state.length === 0) { // See if there is initial data
         try {
           const response = await fetch('https://api.airtable.com/v0/appaCGplNqY1evEUb/Recipes?api_key=keyMx6L7Z9LjE5XF8')
           const data = await response.json()

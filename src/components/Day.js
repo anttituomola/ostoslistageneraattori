@@ -1,15 +1,14 @@
-import React from 'react'
 import { useSelector } from 'react-redux'
 import Portion from './Portion'
 import { v4 as uuid } from "uuid"
-import recipes from '../data/fetchData'
 
 const Day = (props) => {
+    const recipes = useSelector(state => state.recipes.recipes)
     const portionsNeeded = useSelector(state => state.metadata.portionsPerDay)
 
     const portionsPerDay = Array.from({ length: portionsNeeded }, () => {
         // Pick a random recipe from recipes
-        const recipe = recipes[Math.floor(Math.random() * recipes.length)]
+        const recipe = recipes[Math.floor(Math.random() * recipes.length)].fields.Name
         return <Portion key={uuid()} recipe={recipe} />
     })
 
