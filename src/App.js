@@ -4,8 +4,32 @@ import Title from './components/Title'
 import Metadata from './components/Metadata'
 import ShoppingList from './components/ShoppingList'
 import Submit from './components/Submit'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { recipeData } from './reducers/recipeReducer';
 
 export default function App() {
+  const dispatch = useDispatch()
+  const state = useSelector(state => state.recipes.recipes)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (state.length === 0) { // Katsotaan, onko lista tyhjä
+        try {
+          const response = await fetch('https://api.airtable.com/v0/appaCGplNqY1evEUb/Recipes?api_key=keyMx6L7Z9LjE5XF8')
+          const data = await response.json()
+          console.log(data.records)
+          dispatch(recipeData(data.records))
+        }
+        catch (error) {
+          console.log(error)
+        }
+      }
+    }
+      fetchData()
+    }, [dispatch, state])
+
+
   return (
     <div className="App">
       <Title />

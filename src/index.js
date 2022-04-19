@@ -7,11 +7,13 @@ import { configureStore } from "@reduxjs/toolkit"
 import { Provider } from "react-redux"
 import metadataReducer from "./reducers/metadata"
 import modalReducer from './reducers/modalReducer';
+import recipeReducer from './reducers/recipeReducer';
 
 const store = configureStore({
 	reducer: {
     metadata: metadataReducer,
     modal: modalReducer,
+    recipes: recipeReducer,
   }
 })
 
