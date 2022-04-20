@@ -6,7 +6,7 @@ import ShoppingList from './components/ShoppingList'
 import Submit from './components/Submit'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { recipeData } from './reducers/recipeReducer';
+import { recipeData, recipeRows } from './reducers/recipeReducer';
 
 export default function App() {
   const dispatch = useDispatch()
@@ -19,12 +19,22 @@ export default function App() {
         try {
           const response = await fetch('https://api.airtable.com/v0/appaCGplNqY1evEUb/Recipes?api_key=keyMx6L7Z9LjE5XF8')
           const data = await response.json()
-          console.log(data.records)
           dispatch(recipeData(data.records))
         }
         catch (error) {
           console.log(error)
         }
+        const fetchRecipeRows = async () => {
+          try {
+            const response = await fetch('https://api.airtable.com/v0/appaCGplNqY1evEUb/RecipeRows?api_key=keyMx6L7Z9LjE5XF8')
+            const data = await response.json()
+            dispatch(recipeRows(data.records))
+          }
+          catch (error) {
+            console.log(error)
+          }
+        }
+        fetchRecipeRows()
       }
     }
       fetchData()
