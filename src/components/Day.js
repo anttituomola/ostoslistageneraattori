@@ -8,7 +8,7 @@ const Day = (props) => {
 
     const portionsPerDay = Array.from({ length: portionsNeeded }, () => {
         // Pick a random recipe from recipes
-        const recipe = recipes[Math.floor(Math.random() * recipes.length)].fields.Name
+        const recipe = recipes.length ? recipes[Math.floor(Math.random() * recipes.length)].fields.Name : "loading"
         return <Portion key={uuid()} recipe={recipe} />
     })
 
