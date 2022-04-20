@@ -23,34 +23,3 @@ const Day = (props) => {
 }
 
 export default Day
-
-
-
-
-
-
-
-
-
-/*     const recipes = useBuildPlan()
-    const days = useSelector(state => state.metadata.days)
-    const dayElements = [...Array(days)]
-    const portionsPerDay = useSelector(state => state.metadata.portionsPerDay)
-    const portionElements = [...Array(portionsPerDay)]
-    const localRecipes = [...recipes]
-
-
-    // Fill day elements with portion elements
-    dayElements.map((day, index) => {
-        dayElements[index] = portionElements
-        return dayElements
-    })
-
-    // Fill portion elements with recipes
-    const filledDays = dayElements.map((day, index) => {
-        day = day.map((portion, index) => {
-            day[index] = localRecipes.pop()
-            return day[index]
-        })
-        return day
-    }) */
