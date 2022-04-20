@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 export const Ingredients = () => {
   const recipes = useSelector(state => state.recipes.recipes)
   const recipeRowData = useSelector(state => state.recipes.recipeRows)
+  const ingredientsData = useSelector(state => state.recipes.ingredients)
   let ingredients = <p>Loading...</p>
 
   console.log(recipes)
@@ -19,16 +20,26 @@ export const Ingredients = () => {
     const matchingRecipeRows = recipeRowData.filter(recipeRow => {
       return recipeRowsInRecipesFlat.includes(recipeRow.id)
     })
-    console.log(matchingRecipeRows)
 
     // Get ingredient IDs from matchingRecipeRows
     const ingredientIds = matchingRecipeRows.map(recipeRow => {
       return recipeRow.fields.Ingredient
     })
+
+    // Flatten the array of arrays
+    const ingredientIdsFlat = ingredientIds.flat()
+
+    // Find matching ingredient IDs in ingredientData
+    const matchingIngredients = ingredientsData.filter(ingredient => {
+      return ingredientIdsFlat.includes(ingredient.id)
+    })
+    console.log(ingredientsData)
     console.log(ingredientIds)
+    console.log(matchingIngredients)
+
 
     // Render ingredients name
-    ingredients = matchingRecipeRows.map(recipeRow => {
+    ingredients = matchingIngredients.map(recipeRow => {
       return <p key={recipeRow.id}>{recipeRow.fields.Name}, {recipeRow.fields.AmountPerPerson * 2} {recipeRow.fields.Unit}</p>
     })
   }
