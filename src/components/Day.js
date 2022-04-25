@@ -1,7 +1,3 @@
-import { useSelector } from 'react-redux'
-import Portion from './Portion'
-import { v4 as uuid } from "uuid"
-
 const Day = (props) => {
     let portions = ""
     console.log(props.portions)
