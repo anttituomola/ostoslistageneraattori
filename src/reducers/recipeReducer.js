@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
     recipes: [],
     recipeRows: [],
-    ingredients: []
+    ingredients: [],
+    currentPlan: []
 }
 
 export const recipeSlice = createSlice({
@@ -18,10 +19,16 @@ export const recipeSlice = createSlice({
         },
         ingredients: (state, action) => {
             state.ingredients = action.payload
+        },
+        addCurrentPlan: (state, action) => {
+            state.currentPlan.push(action)
+        },
+        clearCurrentPlan: (state, action) => {
+            state.currentPlan = []
         }
     }
 })
 
-export const { recipeData, recipeRows, ingredients } = recipeSlice.actions
+export const { recipeData, recipeRows, ingredients, addCurrentPlan, clearCurrentPlan } = recipeSlice.actions
 
 export default recipeSlice.reducer

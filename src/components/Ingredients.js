@@ -6,7 +6,6 @@ export const Ingredients = () => {
   const ingredientsData = useSelector(state => state.recipes.ingredients)
   let ingredients = <p>Loading...</p>
 
-  console.log(recipes)
   if (recipes.length !== 0) {
     // Get every recipeRow id mentioned in the recipes
     const recipeRowsInRecipes = recipes.map(recipe => {
@@ -33,10 +32,6 @@ export const Ingredients = () => {
     const matchingIngredients = ingredientsData.filter(ingredient => {
       return ingredientIdsFlat.includes(ingredient.id)
     })
-    console.log(ingredientsData)
-    console.log(ingredientIds)
-    console.log(matchingIngredients)
-
 
     // Render ingredients name
     ingredients = matchingIngredients.map(recipeRow => {

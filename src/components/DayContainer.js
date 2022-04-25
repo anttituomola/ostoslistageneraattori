@@ -1,15 +1,25 @@
-import React from 'react'
 import dayjs from 'dayjs'
 import { useSelector } from 'react-redux'
 import Day from './Day'
 import { v4 as uuid } from "uuid"
 import Modal from './Modal'
+import { useBuildPlan } from '../data/useBuildPlan'
 
 const DayContainer = () => {
+  const currentPlan = useBuildPlan()
+  const portionsPerDay = useSelector(state => state.metadata.portionsPerDay)
   const daysNeeded = useSelector(state => state.metadata.days)
 
+  const chunk = (arr, size) =>
+    Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+      arr.slice(i * size, i * size + size)
+    )
+
+  const chunks = chunk(currentPlan, portionsPerDay)
+  console.log(chunks)
+
   const days = Array.from({ length: daysNeeded }, (x, i) => {
-    return <Day key={uuid()} weekday={dayjs().add(i, "day").format("dddd")} />
+    return <Day key={uuid()} portions={chunks[i]} weekday={dayjs().add(i, "day").format("dddd")} />
   })
 
   return (
