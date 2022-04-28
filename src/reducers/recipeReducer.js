@@ -21,7 +21,7 @@ export const recipeSlice = createSlice({
             state.ingredients = action.payload
         },
         addCurrentPlan: (state, action) => {
-            state.currentPlan.push(action)
+            state.currentPlan.push(action.payload)
         },
         clearCurrentPlan: (state, action) => {
             state.currentPlan = []

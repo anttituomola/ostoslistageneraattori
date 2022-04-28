@@ -7,6 +7,7 @@ import Submit from './components/Submit'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { recipeData, recipeRows, ingredients } from './reducers/recipeReducer'
+import { BuildPlan } from './data/BuildPlan';
 
 export default function App() {
   const dispatch = useDispatch()
@@ -18,15 +19,15 @@ export default function App() {
       if (state.length === 0) { // See if there is initial data
         try {
           // Fetch recipes
-          fetch('https://api.airtable.com/v0/appaCGplNqY1evEUb/Recipes?api_key=keyMx6L7Z9LjE5XF8')
+          await fetch('https://api.airtable.com/v0/appaCGplNqY1evEUb/Recipes?api_key=keyMx6L7Z9LjE5XF8')
             .then(response => response.json())
-            .then(data => dispatch(recipeData(data.records)));
-
+            .then(data => dispatch(recipeData(data.records)))
+            dispatch(BuildPlan())
 
           // Fetch recipeRows
           fetch('https://api.airtable.com/v0/appaCGplNqY1evEUb/RecipeRows?api_key=keyMx6L7Z9LjE5XF8')
             .then(response => response.json())
-            .then(dataRows => dispatch(recipeRows(dataRows.records)));
+            .then(dataRows => dispatch(recipeRows(dataRows.records)))
 
 
           // Fetch ingredients
