@@ -7,19 +7,22 @@ import { BuildPlan } from '../data/BuildPlan'
 import { useEffect } from 'react'
 
 const DayContainer = () => {
-    const dispatch = useDispatch()
-    const portionsPerDay = useSelector(state => state.metadata.portionsPerDay)
-    const daysNeeded = useSelector(state => state.metadata.days)
-    const currentPlan = useSelector(state => state.recipes.currentPlan)
-    useEffect(() => {
-      dispatch(BuildPlan())
-    }, [daysNeeded, portionsPerDay, dispatch])
+  const dispatch = useDispatch()
+  const portionsPerDay = useSelector(state => state.metadata.portionsPerDay)
+  const daysNeeded = useSelector(state => state.metadata.days)
+  const currentPlan = useSelector(state => state.recipes.currentPlan)
 
+  // Run BuildPlan on mount
+  useEffect(() => {
+    dispatch(BuildPlan())
+  }, [daysNeeded, portionsPerDay, dispatch])
+
+  // Divide portions into days
   const chunk = (arr, size) =>
     Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
       arr.slice(i * size, i * size + size)
     )
-
+     
   const chunks = chunk(currentPlan, portionsPerDay)
 
   const days = Array.from({ length: daysNeeded }, (x, i) => {
