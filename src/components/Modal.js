@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { hideModal } from '../reducers/modalReducer';
-import { useSelector } from 'react-redux';
 
 const Modal = (props) => {
     const dispatch = useDispatch()
+    const recipeRows = useSelector(state => state.recipes.recipeRows)
+    const diners = useSelector(state => state.metadata.diners)
     const modalRef = useRef(null)
     const modalVisible = useSelector(state => state.modal.modalVisible)
     const recipe = useSelector(state => state.modal.modalRecipe)
@@ -53,12 +54,27 @@ const Modal = (props) => {
     if (!modalVisible) {
         return null
     }
+
     
+    // Find matching recipe rows
+    const recipeRowIds = recipe.fields.RecipeRows
+    const matchingRecipeRows = recipeRows.filter(row => {
+        return recipeRowIds.includes(row.id)
+    })
+
+    // Render ingredients
+    const ingredients = matchingRecipeRows.map(recipe => {
+        return <div key={recipe.id}>{recipe.fields.Name}, {recipe.fields.AmountPerPerson * diners} {recipe.fields.Unit}</div>
+    })
+    
+
     return (
         <div className="modal">
             <div className="modalContent" ref={modalRef}>
                 <span className="close" onClick={() => dispatch(hideModal())}>X</span>
-                <h2>{recipe}</h2>
+                <h2>{recipe.fields.Name}</h2>
+                <h3>Ingredients needed:</h3>
+                {ingredients}
             </div>
         </div>
     )

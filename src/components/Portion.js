@@ -7,8 +7,7 @@ const Portion = (props) => {
 
     function handleModalGeneration() {
         dispatch(showModal())
-        dispatch(setModalRecipe(props.portion.fields.Name))
-        console.log(props)
+        dispatch(setModalRecipe(props.portion))
     }
 
     return (
