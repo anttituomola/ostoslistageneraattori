@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { Ingredients } from './Ingredients'
 
 const ShoppingList = () => {
   const [triangleDown, turnTriangle] = useState(false)
@@ -10,10 +11,7 @@ const ShoppingList = () => {
         <span className={triangleDown ? "triangleDown material-icons" : "triangleUp material-icons"} onClick={() => turnTriangle(!triangleDown)}>eject</span>
       </div>
         <ul className={triangleDown ? "ingredientsVisible" : "ingredientsHidden"}>
-          <li>Salt</li>
-          <li>Pepper</li>
-          <li>3 tomatoes</li>
-          <li>2 cloves of garlic</li>
+          <Ingredients />
         </ul>
     </div>
   )

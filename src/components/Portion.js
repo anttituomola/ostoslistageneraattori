@@ -12,7 +12,7 @@ const Portion = (props) => {
 
     return (
         <div className="portion" onClick={() => handleModalGeneration()}>
-            <h3>{props.recipe}</h3>
+            <h3>{props.portion.fields.Name}</h3>
         </div>
     )
 }
