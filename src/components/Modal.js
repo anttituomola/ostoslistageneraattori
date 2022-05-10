@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux';
 import { hideModal } from '../reducers/modalReducer';
 import { useSelector } from 'react-redux';
